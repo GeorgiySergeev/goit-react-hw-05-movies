@@ -31,7 +31,7 @@ const Reviews = () => {
             return (
               <li key={id}>
                 <p>{content}</p>
-                <a href={url}></a>
+                {/* <a href={url}></a> */}
               </li>
             );
           })}

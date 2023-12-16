@@ -1,4 +1,3 @@
-import { NavLink, useParams } from 'react-router-dom';
 import {
   GalleryItem,
   ImageGalleryItemImage,
@@ -8,7 +7,7 @@ import {
 } from './MovieCard.styled';
 
 import { ReactComponent as IconLow } from '../../assets/icons/awful _35.svg';
-import { ReactComponent as IconNormal } from '../../assets/icons/normal _35 and _80.svg';
+// import { ReactComponent as IconNormal } from '../../assets/icons/normal _35 and _80.svg';
 import { ReactComponent as IconHigh } from '../../assets/icons/great _ 80.svg';
 
 export const MovieCard = ({ id, img, title, rating, relise = 'no info' }) => {

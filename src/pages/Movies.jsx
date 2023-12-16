@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
 import { useState } from 'react';
 import { searchMovie } from 'servises/api';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
-  const [totalPages, setTotalPages] = useState(1);
+  // const [totalPages, setTotalPages] = useState(1);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -15,9 +14,9 @@ const Movies = () => {
     }
 
     try {
-      const { total_pages, results } = await searchMovie(query, 1);
+      const { results } = await searchMovie(query, 1);
       setResults(results);
-      setTotalPages(total_pages);
+      // setTotalPages(total_pages);
     } catch (error) {
       console.log(error);
     }
