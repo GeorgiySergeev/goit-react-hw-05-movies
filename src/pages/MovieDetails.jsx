@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Link, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'servises/api';
 import { convertMinutesToHoursAndMinutes } from 'servises/minutesTohours';
 
