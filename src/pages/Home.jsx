@@ -1,91 +1,57 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Input, Form } from '../components/Header/Header.styled';
+import { useSearchParams } from 'react-router-dom';
 
-import { TitleSecond } from './MovieDetails.styled';
-
-import { Gallery, GalleryWrapper } from 'pages/Home.styled';
-import { MovieCard } from 'components/MovieCard/MovieCard';
 import { getAllTrending } from 'servises/api';
 import { TopBar } from 'components/TopBar/TopBar';
+import { Gallery } from 'components/Gallery/Gallery';
+
+import { RadioButtonForm } from 'components/RadioButtonForm/RadioButtonForm';
+import { LoadingSpinner } from 'components/Loader/Loader';
 
 const Home = () => {
-  const [selectedOption, setSelectedOption] = useState('day');
+  const [isLoading, setLoading] = useState(false);
   const [topMovies, setTopMovies] = useState([]);
-  const [range, setRange] = useState('day');
-  const locaation = useLocation();
+  // const [range, setRange] = useState('day');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const range = searchParams.get('range') || 'day';
 
-  const handleOptionChange = event => {
-    setSelectedOption(event.target.id);
-    setRange(event.target.id);
+  const onRangeChange = value => {
+    // setRange(value);
+    setSearchParams({ range: value });
   };
 
   useEffect(() => {
+    setLoading(true);
+
     const getTopMovies = async () => {
-      const data = await getAllTrending(range);
-      console.log(data);
-      setTopMovies(data);
+      try {
+        const data = await getAllTrending(range);
+        setTopMovies(data);
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setLoading(false);
+      }
     };
     getTopMovies();
   }, [range]);
 
   return (
     <>
-      <GalleryWrapper>
-        <TopBar />
-        {locaation.pathname === '/' && (
-          <Form>
-            <p>Top rate</p>
-            <label htmlFor="day">
-              <Input
-                name="day"
-                id="day"
-                type="radio"
-                checked={selectedOption === 'day'}
-                onChange={handleOptionChange}
-              />
-              <p>Day</p>
-            </label>
-            <label htmlFor="week">
-              <Input
-                name="week"
-                id="week"
-                type="radio"
-                checked={selectedOption === 'week'}
-                onChange={handleOptionChange}
-              />
-              <p>Week</p>
-            </label>
-          </Form>
-        )}
-        <TitleSecond>Popular movies right now</TitleSecond>
+      {isLoading && <LoadingSpinner />}
+      <div style={{ width: 998, padding: 60 }}>
+        <TopBar
+          title={'Welcome to'}
+          span={'MovieBox'}
+          text={
+            'Browse movies, add them to watchlists and share them with friends. Just click the to add a movie, the poster to see more details or to mark the movie as watched.'
+          }
+        />
+        <h2>Popular movies right now</h2>
+        <RadioButtonForm onChange={onRangeChange}></RadioButtonForm>
 
-        <Gallery>
-          {topMovies.map(
-            ({
-              poster_path,
-              id,
-              title,
-              name,
-              original_title,
-              popularity,
-              release_date,
-            }) => {
-              return (
-                <Link to={`/movies/${id}`} key={id}>
-                  <MovieCard
-                    id={id}
-                    img={poster_path}
-                    title={title || name}
-                    rating={popularity}
-                    relise={release_date}
-                  ></MovieCard>
-                </Link>
-              );
-            }
-          )}
-        </Gallery>
-      </GalleryWrapper>
+        <Gallery gallery={topMovies}></Gallery>
+      </div>
     </>
   );
 };

@@ -2,15 +2,17 @@ import { NavLink } from 'react-router-dom';
 import { ReactComponent as HomeIcon } from '../../assets/icons/nav/Home.svg';
 import { ReactComponent as SearchIcon } from '../../assets/icons/nav/search.svg';
 
+import { GenreList } from 'components/GenreList/GenreList';
+
 import {
   HeaderContainer,
   Nav,
   HeadTitle,
   NavButton,
   AddToListButton,
-} from './Header.styled';
+} from './Sidebar.styled';
 
-export const Header = () => {
+export const Sidebar = () => {
   return (
     <HeaderContainer>
       <HeadTitle>MovieBox</HeadTitle>
@@ -29,6 +31,7 @@ export const Header = () => {
         </NavLink>
       </Nav>
       <AddToListButton>+ Create watchlist</AddToListButton>
+      <GenreList></GenreList>
     </HeaderContainer>
   );
 };

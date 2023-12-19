@@ -12,8 +12,12 @@ export const IconAddToListStyled = styled(IconAddToList)`
 
 export const GalleryItem = styled.li`
   position: relative;
-  width: 150px;
-  height: 340px;
+  width: 200px;
+  height: 415px;
+
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  /* text-align: center; */
   /* min-height: 450px; */
   /* padding: 15px 10px; */
   border-radius: 2px;
@@ -43,8 +47,8 @@ export const ImageGalleryItemImage = styled.img`
 `;
 
 export const InfoBox = styled.div`
-  width: 100%;
-  height: 100%;
+  /* width: 100%; */
+  /* height: 100%; */
   padding: 0px 10px;
 `;
 

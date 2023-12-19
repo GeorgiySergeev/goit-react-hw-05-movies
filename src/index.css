@@ -1,6 +1,8 @@
 @import-normalize; /* bring in normalize.css styles */
+
 html,
 body {
+  box-sizing: border-box;
   margin: 0;
 
   width: 100%;
@@ -92,4 +94,5 @@ a {
 .active {
   /* color: tomato; */
   background-color: #1f1f1f;
+  border-radius: 8px;
 }
