@@ -1,9 +1,8 @@
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ReactComponent as HomeIcon } from '../../assets/icons/nav/Home.svg';
 import { ReactComponent as SearchIcon } from '../../assets/icons/nav/search.svg';
-
 import { GenreList } from 'components/GenreList/GenreList';
-
 import {
   HeaderContainer,
   Nav,
@@ -13,6 +12,15 @@ import {
 } from './Sidebar.styled';
 
 export const Sidebar = () => {
+  const [shouldShowComponent, setShouldShowComponent] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    const path = location.pathname;
+    const shouldShow = path.includes('/watch-list');
+    setShouldShowComponent(shouldShow);
+  }, [location.pathname]);
+
   return (
     <HeaderContainer>
       <HeadTitle>MovieBox</HeadTitle>
@@ -30,8 +38,10 @@ export const Sidebar = () => {
           </NavButton>
         </NavLink>
       </Nav>
-      <AddToListButton>+ Create watchlist</AddToListButton>
-      <GenreList></GenreList>
+      <Link to={'/watch-list'}>
+        <AddToListButton>My watchlist</AddToListButton>
+      </Link>
+      {!shouldShowComponent && <GenreList></GenreList>}
     </HeaderContainer>
   );
 };

@@ -2,21 +2,19 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { getAllTrending } from 'servises/api';
-import { TopBar } from 'components/TopBar/TopBar';
-import { Gallery } from 'components/Gallery/Gallery';
 
+import { Gallery } from 'components/Gallery/Gallery';
+import { TopBar } from 'components/TopBar/TopBar';
 import { RadioButtonForm } from 'components/RadioButtonForm/RadioButtonForm';
 import { LoadingSpinner } from 'components/Loader/Loader';
 
 const Home = () => {
   const [isLoading, setLoading] = useState(false);
   const [topMovies, setTopMovies] = useState([]);
-  // const [range, setRange] = useState('day');
   const [searchParams, setSearchParams] = useSearchParams();
   const range = searchParams.get('range') || 'day';
 
   const onRangeChange = value => {
-    // setRange(value);
     setSearchParams({ range: value });
   };
 

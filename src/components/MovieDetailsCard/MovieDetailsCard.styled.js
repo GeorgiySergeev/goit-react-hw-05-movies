@@ -82,7 +82,10 @@ export const List = styled.ul`
 export const StyledLi = styled.li`
   font-family: 'Lato', sans-serif;
   font-size: 24px;
-  p {
+  a {
+    :active {
+      color: #f33f3f;
+    }
     :hover {
       color: #f33f3f;
     }

@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-
 import { useParams, useLocation, Link } from 'react-router-dom';
-import { LoadingSpinner } from 'components/Loader/Loader';
 
+import { LoadingSpinner } from 'components/Loader/Loader';
 import { TopBar } from 'components/TopBar/TopBar';
 import { GoToBack } from 'components/GoToBack/GoToBack';
-
 import { sortByGenre } from 'servises/api';
 import { Gallery } from 'components/Gallery/Gallery';
 import { Container } from 'components/MovieDetailsCard/MovieDetailsCard.styled';

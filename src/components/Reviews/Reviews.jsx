@@ -2,6 +2,8 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'servises/api';
+import { ReviewsContainer, Notification } from './Reviews.styled';
+import { textFormat, addSpacesBetweenSentences } from 'servises/textFormater';
 
 const Reviews = () => {
   const [rev, setRev] = useState([]);
@@ -22,22 +24,23 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <ReviewsContainer>
       {!rev.length ? (
-        <p>No results</p>
+        <Notification> Sorry! No reviews found.</Notification>
       ) : (
         <ul>
-          {rev.map(({ id, url, content }) => {
+          {rev.map(({ id, content, author_details: { name } }) => {
+            const solidText = textFormat(content);
             return (
               <li key={id}>
-                <p>{content}</p>
-                {/* <a href={url}></a> */}
+                <h3>{name}</h3>
+                <p>{addSpacesBetweenSentences(solidText)}</p>
               </li>
             );
           })}
         </ul>
       )}
-    </div>
+    </ReviewsContainer>
   );
 };
 

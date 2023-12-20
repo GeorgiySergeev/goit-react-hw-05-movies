@@ -60,14 +60,10 @@ const MovieDetails = () => {
 
       <List style={{ marginBottom: 25 }}>
         <StyledLi>
-          <NavLink to="cast">
-            <p>Cast</p>
-          </NavLink>
+          <NavLink to="cast">Cast</NavLink>
         </StyledLi>
         <StyledLi>
-          <NavLink to="reviews">
-            <p>Reviews</p>
-          </NavLink>
+          <NavLink to="reviews">Reviews</NavLink>
         </StyledLi>
       </List>
       <Suspense fallback={<div>Is Loading...</div>}>

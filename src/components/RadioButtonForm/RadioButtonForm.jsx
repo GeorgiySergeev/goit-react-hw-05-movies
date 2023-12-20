@@ -1,5 +1,4 @@
 import css from './RadioButtonForm.module.css';
-
 import { useState } from 'react';
 
 export const RadioButtonForm = ({ onChange }) => {

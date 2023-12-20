@@ -17,6 +17,7 @@ const Layout = () => {
           </Suspense>
         </main>
       </LayoutWrapper>
+
       <Footer />
     </>
   );

@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import { convertMinutesToHoursAndMinutes } from 'servises/minutesTohours';
 import defaultImg from '../../assets/default-img/no-available-image.png';
 import { AddToListButton } from 'components/Sidebar/Sidebar.styled';
-import { useState } from 'react';
 
 import {
   Image,

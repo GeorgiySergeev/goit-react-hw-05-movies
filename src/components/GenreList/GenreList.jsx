@@ -1,4 +1,3 @@
-import React from 'react';
 import { getGenre } from 'servises/api';
 import { useEffect, useState } from 'react';
 import { GenreListWrapper, GenreListStyled } from './GenreList.styled';
@@ -17,18 +16,16 @@ export const GenreList = () => {
   }, []);
 
   return (
-    <>
-      <GenreListWrapper>
-        <GenreListStyled>
-          {genre.map(({ id, name }, index) => {
-            return (
-              <NavLink to={`/genres/${name}`} key={id}>
-                <li>{name}</li>
-              </NavLink>
-            );
-          })}
-        </GenreListStyled>
-      </GenreListWrapper>
-    </>
+    <GenreListWrapper>
+      <GenreListStyled>
+        {genre.map(({ id, name }, index) => {
+          return (
+            <NavLink to={`/genres/${name}`} key={id}>
+              <li>{name}</li>
+            </NavLink>
+          );
+        })}
+      </GenreListStyled>
+    </GenreListWrapper>
   );
 };
