@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/260.b598a805.chunk.js","mappings":"mKAMA,UAJkB,WAChB,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,aACd,C","sources":["pages/WatchList.jsx"],"sourcesContent":["import React from 'react';\n\nconst WatchList = () => {\n  return <div>WatchList</div>;\n};\n\nexport default WatchList;\n"],"names":["_jsx","children"],"sourceRoot":""}
